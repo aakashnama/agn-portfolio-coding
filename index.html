@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AGN HUB — Coding Languages Portfolio</title>
+  <meta name="description" content="All major coding languages: quick intro, paradigms, use-cases & learning notes. Designed for AGN HUB TECH & IT SOLUTIONS.">
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#05060b; /* space black */
+      --glass: rgba(255,255,255,0.04);
+      --neon-1: #7c3aed; /* purple */
+      --neon-2: #06b6d4; /* cyan */
+      --neon-3: #f472b6; /* pink */
+      --card-radius: 14px;
+      --accent: linear-gradient(135deg,var(--neon-1),var(--neon-2));
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;background: radial-gradient(1200px 800px at 10% 10%, rgba(124,58,237,0.12), transparent), radial-gradient(900px 600px at 90% 90%, rgba(6,182,212,0.06), transparent), var(--bg); color:#e6eef8}
+    .hero{padding:3.5rem 1rem}
+    .brand{letter-spacing:1px;font-weight:700}
+    .sub{color: #bcd7ee}
+    .glass-card{background:var(--glass);border:1px solid rgba(255,255,255,0.05);backdrop-filter: blur(6px);border-radius:var(--card-radius)}
+    .language-card{transition:transform .18s ease, box-shadow .18s ease}
+    .language-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(3,7,18,0.6), 0 0 18px rgba(124,58,237,0.06)}
+    .badge-paradigm{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.03);color:#dfefff}
+    .glow-title{background: linear-gradient(90deg,#7c3aed 0%, #06b6d4 45%, #f472b6 100%); -webkit-background-clip:text;background-clip:text;color:transparent}
+    .search{max-width:720px}
+    footer{padding:1.25rem 0;color:#9fb8d9}
+    .lang-meta{font-size:0.85rem;color:#cfe7ff;opacity:0.9}
+    .pill{padding:0.25rem 0.6rem;border-radius:999px;font-size:0.75rem}
+    /* responsive adjustments */
+    @media (max-width:576px){.hero{padding:2rem 1rem}}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="row align-items-center hero">
+      <div class="col-md-8">
+        <h1 class="glow-title display-6 mb-2">AGN HUB TECH & IT SOLUTIONS</h1>
+        <p class="lead mb-1" style="color:#cfe7ff">All the coding languages you should know — concise, modern, and aligned for courses, placements & real projects.</p>
+        <p class="sub">Gen‑Z friendly vibe • Futuristic palette • Professional content tone</p>
+      </div>
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <div class="glass-card p-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="brand">AGN HUB</div>
+              <div class="lang-meta">Coding portfolio • Course-ready • Trainer notes</div>
+            </div>
+            <div class="text-end">
+              <div class="badge-pill pill badge-paradigm">Updated: Live</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search / Filters -->
+    <section class="row mb-4">
+      <div class="col-12">
+        <div class="input-group search mx-auto">
+          <span class="input-group-text glass-card">🔎</span>
+          <input id="searchInput" type="search" class="form-control glass-card" placeholder="Search languages, paradigms or use-cases (e.g. 'web', 'systems', 'ml')" oninput="filterCards()">
+          <button class="btn glass-card" type="button" onclick="resetSearch()">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages grid -->
+    <section id="langGrid" class="row g-3" aria-live="polite">
+
+      <!-- cards (generated static) -->
+
+      <!-- Example card template: copy for each language -->
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="systems,low-level,embedded,performance,assembly">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">Assembly</h5>
+            <small class="lang-meta">Low-level • Very high control</small>
+          </div>
+          <p class="mb-2">Tiny, hardware-close instructions — ideal for bootloaders, microcontrollers and performance-critical code. Learning curve: steep. Best for understanding how CPUs work.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Embedded, OS, Drivers</span>
+            <span class="badge badge-paradigm pill">Learning: Hard</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="systems,c,systems programming,performance">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">C</h5>
+            <small class="lang-meta">Procedural • Portable</small>
+          </div>
+          <p class="mb-2">The lingua franca of systems programming. Great for OS, embedded systems and high-performance libraries. Manual memory management gives power and responsibility.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Systems, Embedded</span>
+            <span class="badge badge-paradigm pill">Learning: Moderate</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="systems,c++,oop,games,performance">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">C++</h5>
+            <small class="lang-meta">Multi-paradigm • Performance</small>
+          </div>
+          <p class="mb-2">Powerful for high-performance apps, game engines, and real-time systems. Mixes low-level control with modern abstractions (STL, templates, RAII).</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Games, Systems</span>
+            <span class="badge badge-paradigm pill">Learning: Challenging</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="oop,c#,enterprise,desktop,web,unity">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">C#</h5>
+            <small class="lang-meta">OOP • .NET ecosystem</small>
+          </div>
+          <p class="mb-2">A modern, productive language used for enterprise apps, web backends (ASP.NET), desktop and Unity game development. Excellent tooling and strong typing.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Enterprise, Games</span>
+            <span class="badge badge-paradigm pill">Learning: Friendly</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="java,backend,android,oop,enterprise">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">Java</h5>
+            <small class="lang-meta">OOP • JVM</small>
+          </div>
+          <p class="mb-2">Stable, portable and battle-tested — Java runs on the JVM and is a staple for backend systems, Android apps, and large enterprise platforms.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Backend, Android</span>
+            <span class="badge badge-paradigm pill">Learning: Moderate</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="web,frontend,javascript,nodejs,react">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">JavaScript</h5>
+            <small class="lang-meta">Event-driven • Ubiquitous</small>
+          </div>
+          <p class="mb-2">The language of the web — runs in browsers and servers (Node.js). Essential for frontend interactivity and full-stack JavaScript stacks.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Frontend, Full-stack</span>
+            <span class="badge badge-paradigm pill">Learning: Easy</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="web,typescript,js,scalability,static-typing">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">TypeScript</h5>
+            <small class="lang-meta">Typed JavaScript • Scalable</small>
+          </div>
+          <p class="mb-2">Superset of JavaScript adding static types. Great for large codebases, safer refactors and modern frontend frameworks (Angular, React + TS).</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Large Frontends</span>
+            <span class="badge badge-paradigm pill">Learning: Easy–Moderate</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="python,ml,data,scripting,backend">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">Python</h5>
+            <small class="lang-meta">High-level • Batteries included</small>
+          </div>
+          <p class="mb-2">Beginner-friendly and wildly popular: web backends (Django/Flask), data science, ML (scikit-learn, TensorFlow), scripting and automation.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Data, ML, Web</span>
+            <span class="badge badge-paradigm pill">Learning: Very Easy</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="ruby,web,rails,productivity">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">Ruby</h5>
+            <small class="lang-meta">Expressive • Rails</small>
+          </div>
+          <p class="mb-2">Focuses on developer happiness. Ruby on Rails made rapid product development mainstream — great for MVPs and startups.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Startups, Web</span>
+            <span class="badge badge-paradigm pill">Learning: Easy</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="go,golang,concurrency,cloud,services">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">Go (Golang)</h5>
+            <small class="lang-meta">Concurrent • Simple</small>
+          </div>
+          <p class="mb-2">Designed at Google for networked services and cloud systems. Simple syntax, built-in concurrency primitives, compiled speed and tiny binaries.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Cloud, Microservices</span>
+            <span class="badge badge-paradigm pill">Learning: Easy–Moderate</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="rust,systems,safety,performance,memory">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">Rust</h5>
+            <small class="lang-meta">Safe systems • Ownership</small>
+          </div>
+          <p class="mb-2">Modern systems language that prevents whole classes of memory bugs via its ownership model. Great for secure, high-performance systems and tooling.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Systems, CLI</span>
+            <span class="badge badge-paradigm pill">Learning: Moderate–Hard</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="php,web,backend,cms,wordpress">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">PHP</h5>
+            <small class="lang-meta">Web • Server-side</small>
+          </div>
+          <p class="mb-2">Server-side scripting language powering many websites and content management systems (WordPress, Drupal). Modern PHP (7+) is performant and robust.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Web, CMS</span>
+            <span class="badge badge-paradigm pill">Learning: Easy</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="swift,ios,apple,apps,mobile">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">Swift</h5>
+            <small class="lang-meta">Modern • Apple ecosystem</small>
+          </div>
+          <p class="mb-2">Primary language for iOS/macOS apps — safe, fast and expressive. SwiftUI modernizes UI development with declarative syntax.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: iOS Apps</span>
+            <span class="badge badge-paradigm pill">Learning: Moderate</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="kotlin,android,jvm,modern,interoperable">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">Kotlin</h5>
+            <small class="lang-meta">JVM • Android-first</small>
+          </div>
+          <p class="mb-2">Modern, concise and fully interoperable with Java. Official for Android development and growing for backend services (Ktor, Spring).</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Android, JVM</span>
+            <span class="badge badge-paradigm pill">Learning: Easy–Moderate</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="sql,database,queries,analytics">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">SQL</h5>
+            <small class="lang-meta">Declarative • Databases</small>
+          </div>
+          <p class="mb-2">Structured Query Language — the standard for relational database queries. Essential for data retrieval, reporting and analytics (MySQL, PostgreSQL).</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Databases, BI</span>
+            <span class="badge badge-paradigm pill">Learning: Easy</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="r,data,statistics,ml">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">R</h5>
+            <small class="lang-meta">Statistics • Data analysis</small>
+          </div>
+          <p class="mb-2">Focused on statistics and visualization — widely used by data scientists and researchers. Rich ecosystem (CRAN) for statistical computing.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Data Science</span>
+            <span class="badge badge-paradigm pill">Learning: Moderate</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="matlab,engineering,simulations,numerical">
+        <article class="p-3 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">MATLAB</h5>
+            <small class="lang-meta">Numerical • Engineering</small>
+          </div>
+          <p class="mb-2">Engineered for numerical computing, simulations and prototyping in engineering domains. Great for signal processing, control systems and academia.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-paradigm pill">Use-case: Engineering, Research</span>
+            <span class="badge badge-paradigm pill">Learning: Moderate</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- more languages (compact list) -->
+      <div class="col-12">
+        <h4 class="mt-4 mb-3">Compact — other important languages</h4>
+      </div>
+
+      <!-- row of small cards -->
+      <script>
+        const compact = [
+          ["Dart","Flutter apps, mobile & web UI"],
+          ["Scala","JVM language: functional + OOP, big-data (Spark)"],
+          ["Perl","Text processing, scripting"],
+          ["Lua","Lightweight scripting, game scripting (embedded)"],
+          ["Haskell","Pure functional, strong types, research"],
+          ["Objective-C","Legacy iOS/macOS codebase"],
+          ["Shell (Bash)","Scripting/automation on UNIX systems"],
+          ["Julia","High-performance numerical computing"],
+          ["F#","Functional-first .NET language"],
+          ["Solidity","Smart contracts on Ethereum"],
+          ["VHDL / Verilog","Hardware description languages for FPGAs/ASICs"],
+          ["Fortran","Scientific computing legacy but still used"],
+          ["COBOL","Enterprise legacy systems in finance/government"],
+          ["Erlang / Elixir","Fault-tolerant distributed systems (telecoms, messaging)"],
+          ["Groovy","JVM scripting, Gradle scripts"],
+          ["Ada","Safety-critical aerospace & defense"],
+          ["Prolog","Logic programming, AI research"],
+          ["Lisp / Clojure","Homoiconicity, macros, AI history"]
+        ];
+      </script>
+
+      <div id="compactGrid" class="row g-3 mb-5">
+        <!-- JS will inject compact cards here -->
+      </div>
+
+    </section>
+
+    <footer class="d-flex justify-content-between align-items-center">
+      <div>
+        <div class="brand">AGN HUB TECH & IT SOLUTIONS</div>
+        <div class="lang-meta">Train • Build • Ship</div>
+      </div>
+      <div class="text-end">
+        <small class="sub">Designed with a Gen‑Z vibe, tuned for professional learning.</small>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // inject compact grid
+    const compactGrid = document.getElementById('compactGrid');
+    compact.forEach(item => {
+      const col = document.createElement('div');
+      col.className = 'col-6 col-md-4 col-lg-3';
+      col.innerHTML = `
+        <article class="p-2 glass-card language-card h-100">
+          <div class="d-flex justify-content-between align-items-start">
+            <strong>${item[0]}</strong>
+            <small class="lang-meta">quick</small>
+          </div>
+          <p class="mb-0 small">${item[1]}</p>
+        </article>`;
+      compactGrid.appendChild(col);
+    });
+
+    // Filter function
+    function filterCards(){
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const items = document.querySelectorAll('.language-item');
+      if(!q){ items.forEach(i=>i.style.display='block'); return }
+      items.forEach(item => {
+        const tags = item.getAttribute('data-tags') || '';
+        const text = (item.innerText || '').toLowerCase();
+        const match = tags.includes(q) || text.includes(q);
+        item.style.display = match ? 'block' : 'none';
+      })
+    }
+    function resetSearch(){ document.getElementById('searchInput').value=''; filterCards(); }
+
+    // accessibility: focus first search on load
+    window.addEventListener('load', ()=>{document.getElementById('searchInput').focus();});
+  </script>
+</body>
+</html>
