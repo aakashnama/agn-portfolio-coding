@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // --- CONFIGURATION ---
-const API_KEY = "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"; //  Replace with your key
+const API_KEY = "...."; //  Replace with your key
 const API_URL = "https://api.groq.com/openai/v1/chat/completions";
 const MODEL = "meta-llama/llama-4-scout-17b-16e-instruct";
 
