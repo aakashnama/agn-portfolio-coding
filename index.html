@@ -7,33 +7,8 @@
   <meta name="description" content="All major coding languages: quick intro, paradigms, use-cases & learning notes. Designed for AGN HUB TECH & IT SOLUTIONS.">
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#05060b; /* space black */
-      --glass: rgba(255,255,255,0.04);
-      --neon-1: #7c3aed; /* purple */
-      --neon-2: #06b6d4; /* cyan */
-      --neon-3: #f472b6; /* pink */
-      --card-radius: 14px;
-      --accent: linear-gradient(135deg,var(--neon-1),var(--neon-2));
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    html,body{height:100%;background: radial-gradient(1200px 800px at 10% 10%, rgba(124,58,237,0.12), transparent), radial-gradient(900px 600px at 90% 90%, rgba(6,182,212,0.06), transparent), var(--bg); color:#e6eef8}
-    .hero{padding:3.5rem 1rem}
-    .brand{letter-spacing:1px;font-weight:700}
-    .sub{color: #bcd7ee}
-    .glass-card{background:var(--glass);border:1px solid rgba(255,255,255,0.05);backdrop-filter: blur(6px);border-radius:var(--card-radius)}
-    .language-card{transition:transform .18s ease, box-shadow .18s ease}
-    .language-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(3,7,18,0.6), 0 0 18px rgba(124,58,237,0.06)}
-    .badge-paradigm{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.03);color:#dfefff}
-    .glow-title{background: linear-gradient(90deg,#7c3aed 0%, #06b6d4 45%, #f472b6 100%); -webkit-background-clip:text;background-clip:text;color:transparent}
-    .search{max-width:720px}
-    footer{padding:1.25rem 0;color:#9fb8d9}
-    .lang-meta{font-size:0.85rem;color:#cfe7ff;opacity:0.9}
-    .pill{padding:0.25rem 0.6rem;border-radius:999px;font-size:0.75rem}
-    /* responsive adjustments */
-    @media (max-width:576px){.hero{padding:2rem 1rem}}
-  </style>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="container">
@@ -63,18 +38,14 @@
       <div class="col-12">
         <div class="input-group search mx-auto">
           <span class="input-group-text glass-card">🔎</span>
-          <input id="searchInput" type="search" class="form-control glass-card" placeholder="Search languages, paradigms or use-cases (e.g. 'web', 'systems', 'ml')" oninput="filterCards()">
-          <button class="btn glass-card" type="button" onclick="resetSearch()">Reset</button>
+          <input id="searchInput" type="search" class="form-control glass-card" placeholder="Search languages, paradigms or use-cases (e.g. 'web', 'systems', 'ml')">
+          <button id="resetBtn" class="btn glass-card" type="button">Reset</button>
         </div>
       </div>
     </section>
 
     <!-- Languages grid -->
     <section id="langGrid" class="row g-3" aria-live="polite">
-
-      <!-- cards (generated static) -->
-
-      <!-- Example card template: copy for each language -->
 
       <div class="col-12 col-md-6 col-lg-4 language-item" data-tags="systems,low-level,embedded,performance,assembly">
         <article class="p-3 glass-card language-card h-100">
@@ -320,33 +291,9 @@
       </div>
 
       <!-- row of small cards -->
-      <script>
-        const compact = [
-          ["Dart","Flutter apps, mobile & web UI"],
-          ["Scala","JVM language: functional + OOP, big-data (Spark)"],
-          ["Perl","Text processing, scripting"],
-          ["Lua","Lightweight scripting, game scripting (embedded)"],
-          ["Haskell","Pure functional, strong types, research"],
-          ["Objective-C","Legacy iOS/macOS codebase"],
-          ["Shell (Bash)","Scripting/automation on UNIX systems"],
-          ["Julia","High-performance numerical computing"],
-          ["F#","Functional-first .NET language"],
-          ["Solidity","Smart contracts on Ethereum"],
-          ["VHDL / Verilog","Hardware description languages for FPGAs/ASICs"],
-          ["Fortran","Scientific computing legacy but still used"],
-          ["COBOL","Enterprise legacy systems in finance/government"],
-          ["Erlang / Elixir","Fault-tolerant distributed systems (telecoms, messaging)"],
-          ["Groovy","JVM scripting, Gradle scripts"],
-          ["Ada","Safety-critical aerospace & defense"],
-          ["Prolog","Logic programming, AI research"],
-          ["Lisp / Clojure","Homoiconicity, macros, AI history"]
-        ];
-      </script>
-
       <div id="compactGrid" class="row g-3 mb-5">
         <!-- JS will inject compact cards here -->
       </div>
-
     </section>
 
     <footer class="d-flex justify-content-between align-items-center">
@@ -358,43 +305,20 @@
         <small class="sub">Designed with a Gen‑Z vibe, tuned for professional learning.</small>
       </div>
     </footer>
-
   </main>
 
+  <div id="textModal" class="modal-overlay" style="display:none;">
+    <div class="modal-box glass-card p-4">
+      <div class="d-flex justify-content-between mb-3">
+        <h5 id="modalTitle" class="mb-0 glow-title"></h5>
+        <button class="btn-close btn-close-white" onclick="closeModal()"></button>
+      </div>
+      <pre id="modalContent" class="text-light mb-0"></pre>
+    </div>
+  </div>
+  <!-- Bootstrap 5 CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // inject compact grid
-    const compactGrid = document.getElementById('compactGrid');
-    compact.forEach(item => {
-      const col = document.createElement('div');
-      col.className = 'col-6 col-md-4 col-lg-3';
-      col.innerHTML = `
-        <article class="p-2 glass-card language-card h-100">
-          <div class="d-flex justify-content-between align-items-start">
-            <strong>${item[0]}</strong>
-            <small class="lang-meta">quick</small>
-          </div>
-          <p class="mb-0 small">${item[1]}</p>
-        </article>`;
-      compactGrid.appendChild(col);
-    });
-
-    // Filter function
-    function filterCards(){
-      const q = document.getElementById('searchInput').value.trim().toLowerCase();
-      const items = document.querySelectorAll('.language-item');
-      if(!q){ items.forEach(i=>i.style.display='block'); return }
-      items.forEach(item => {
-        const tags = item.getAttribute('data-tags') || '';
-        const text = (item.innerText || '').toLowerCase();
-        const match = tags.includes(q) || text.includes(q);
-        item.style.display = match ? 'block' : 'none';
-      })
-    }
-    function resetSearch(){ document.getElementById('searchInput').value=''; filterCards(); }
-
-    // accessibility: focus first search on load
-    window.addEventListener('load', ()=>{document.getElementById('searchInput').focus();});
-  </script>
+  <!-- Custom JS -->
+  <script src="app.js"></script>
 </body>
 </html>
